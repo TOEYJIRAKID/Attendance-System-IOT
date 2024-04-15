@@ -1,6 +1,6 @@
 # ชื่อโครงการ: ระบบแจ้งเตือนการเข้า-ออกโรงเรียน (Attendance System)
 ## Link to youtube
-[ระบบแจ้งเตือนการเข้า-ออกโรงเรียน (Attendance System)](https://youtu.be/BAh69DkOwuc?si=MIl8_Ys98mKSaYL-)
+[ระบบแจ้งเตือนการเข้า-ออกโรงเรียน (Attendance System)](https://youtu.be/KL_V3an5sYI?si=3Aa9S0eRrL_CML0v)
 ## สมาชิกในกลุ่ม
 - 64102080 จิรกิตติ์ เอียดเหตุ 
 - 64110455 ภัครศักดิ์ ผลสนอง 
