@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "uid": "2",
+      "studentid": "64125735",
+      "firstname": "ธนวัฒน์",
+      "lastname": "กองสีสังข์",
+      "position": "นักศึกษา",
+      "timestamp": "20:15:40",
+      "status": "เข้า",
+      "id": 1
+    },
+    {
+      "uid": "2",
+      "studentid": "64125735",
+      "firstname": "ธนวัฒน์",
+      "lastname": "กองสีสังข์",
+      "position": "นักศึกษา",
+      "timestamp": "20:15:43",
+      "status": "ออก",
+      "id": 2
+    }
+  ]
+}

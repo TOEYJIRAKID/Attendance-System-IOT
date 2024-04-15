@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance System</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("https://dcc.wu.ac.th/wp-content/uploads/2020/09/DJI_0094-text-scaled.jpg") center/cover no-repeat;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 1980px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(222, 226, 230, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-header {
+    background-color: rgba(0, 123, 255, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0, 86, 179, 0.8);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+
+  th,
+  td {
+    padding: 15px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+
+  th {
+    background-color: rgba(8, 0, 155, 0.8);
+    color: white;
+    border-radius: 0px;
+  }
+
+  tbody tr:hover {
+    background-color: rgba(248, 249, 250, 0.8);
+  }
+
+
+
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+  }
+
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+</style>
+
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h2 class="mb-0">Attendance System</h2>
+    </div>
+    <div class="card-body" id="table-container">
+      <table class="table table-bordered table-hover" id="data-table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">StudentID</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Position</th>
+            <th scope="col">Timestamp</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Add your table data here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    async function updateTable() {
+      const tableBody = document.getElementById("table-body");
+
+      try {
+        const response = await fetch("/getusers");
+        const userData = await response.json();
+
+        tableBody.innerHTML = "";
+
+        userData.forEach((data, index) => {
+          const row = document.createElement("tr");
+
+          const noCell = document.createElement("td");
+          noCell.textContent = index + 1;
+          row.appendChild(noCell);
+
+          const uidCell = document.createElement("td");
+          uidCell.textContent = data.studentid;
+          row.appendChild(uidCell);
+
+          const firstnameCell = document.createElement("td");
+          firstnameCell.textContent = data.firstname;
+          row.appendChild(firstnameCell);
+
+          const lastnameCell = document.createElement("td");
+          lastnameCell.textContent = data.lastname;
+          row.appendChild(lastnameCell);
+
+          const positionCell = document.createElement("td");
+          positionCell.textContent = data.position;
+          row.appendChild(positionCell);
+
+          const timestampCell = document.createElement("td");
+          timestampCell.textContent = data.timestamp;
+          row.appendChild(timestampCell);
+
+          const statusCell = document.createElement("td");
+          statusCell.textContent = data.status;
+          row.appendChild(statusCell);
+
+          const deleteButtonCell = document.createElement("td");
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.className = "delete-button";
+          deleteButton.addEventListener("click", () => deleteRow(data.id));
+          deleteButtonCell.appendChild(deleteButton);
+          row.appendChild(deleteButtonCell);
+
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    async function deleteRow(userId) {
+      try {
+        const response = await fetch(`/deleteuser/${userId}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          updateTable();
+        } else {
+          console.error(
+            `Failed to delete user. Status code: ${response.status}`
+          );
+        }
+      } catch (error) {
+        console.error("Error deleting user:", error);
+      }
+    }
+
+    window.onload = updateTable;
+    setInterval(updateTable, 3000);
+  </script>
+</body>
+
+</html>
