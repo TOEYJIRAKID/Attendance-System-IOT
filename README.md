@@ -1,4 +1,4 @@
-# ชื่อโครงการ: ระบบแจ้งเตือนการเข้า-ออกโรงเรียน (Attendance System)
+# ระบบแจ้งเตือนการเข้า-ออกโรงเรียน (Attendance System)
 
 ###### [(ระบบนี้ Transfer มาจาก Github Account เก่า --> https://github.com/TOEYJIRAKIT/IOT-MiniProject)](https://github.com/TOEYJIRAKIT/IOT-MiniProject)
 
