@@ -8,11 +8,6 @@ Attendance System – Attendance Notification System (Smart School Entry)
 
 Attendance Notification System (Smart School Entry) is an IoT-based that utilizes RFID and Arduino to efficiently track student check-ins and check-outs. Traditional attendance methods often face issues such as lost paper records, delayed updates, and lack of real-time notifications for parents. This system enhances student security and improves school management by providing real-time attendance tracking, web-based monitoring, and instant notifications via LINE Notify.
 
-## 🙏 **Project Member** :
-- 64102080 จิรกิตติ์ เอียดเหตุ 
-- 64110455 ภัครศักดิ์ ผลสนอง 
-- 64125735 ธนวัฒน์ กองสีสังข์
-
 ## 🎯 **Objective** :
 
 - Develop a system to record student check-in and check-out data and display it on a website.  
@@ -25,9 +20,52 @@ Attendance Notification System (Smart School Entry) is an IoT-based that utilize
 - **LINE Notify Integration** – Sends real-time attendance notifications to parents.
 - **Basic Data Logging** – Stores and retrieves attendance records in JSON format.
 
+## 💻 **Development Details** :
+
+### **Hardware Components**
+- **Arduino UNO+WiFi R3 ATmega328P+ESP8266 Web Server** – Used for reading sensor data and connecting components.
+- **RFID Sensor** – Reads student ID cards.
+- **OLED Display** – Displays scanned card details.
+- **Jumper Wires** – Connects sensors to the microcontroller.
+- **Key Tag** – Used for scanning and sending data.
+
+### **Programming Languages**
+- **C** – Programs the microcontroller to read and send data.
+- **JSON** – Stores and transfers data via JSON Server.
+- **JavaScript** – Retrieves data from JSON Server for display.
+- **HTML & CSS** – Designs the web interface for attendance monitoring.
+
+### **Libraries Used**
+- SPI.h – Serial Peripheral Interface communication.
+- Wire.h – I2C communication for RFID module.
+- Adafruit_GFX.h – Graphics library for OLED display.
+- Adafruit_SSD1306.h – OLED control library.
+- MFRC522.h – RFID card reader library.
+- ESP8266WiFi.h – WiFi connection for ESP8266.
+- NTPClient.h – Synchronizes time with NTP server.
+- WiFiUdp.h – Handles UDP communication.
+- PubSubClient.h – MQTT protocol for message transmission.
+- TridentTD_LineNotify.h – Sends notifications via LINE Notify API.
+
 ## 📂 **GitHub Repository (Source Code)** :
 
 - [https://github.com/TOEYJIRAKID/Attendance-System-IOT](https://github.com/TOEYJIRAKID/Attendance-System-IOT)
+
+## ⚙️ **Installation & Setup** :
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/TOEYJIRAKID/Attendance-System-IOT.git
+   ```  
+2. **Install json-server**  
+   ```bash
+   npm install json-server
+   ```  
+3. **Run the JSON Server**  
+   ```bash
+   npx json-server data.json --watch --port 3000
+   ```  
+4. **Open http://localhost:3000/users to view the json data.**
 
 ## 🏗️ **System Architecture** :
 
@@ -108,33 +146,6 @@ The attendance data is stored in **JSON format**, containing student details suc
 }
 ```
 
-## 💻 **Development Details** :
-
-### **Hardware Components**
-- **Arduino UNO+WiFi R3 ATmega328P+ESP8266 Web Server** – Used for reading sensor data and connecting components.
-- **RFID Sensor** – Reads student ID cards.
-- **OLED Display** – Displays scanned card details.
-- **Jumper Wires** – Connects sensors to the microcontroller.
-- **Key Tag** – Used for scanning and sending data.
-
-### **Programming Languages**
-- **C** – Programs the microcontroller to read and send data.
-- **JSON** – Stores and transfers data via JSON Server.
-- **JavaScript** – Retrieves data from JSON Server for display.
-- **HTML & CSS** – Designs the web interface for attendance monitoring.
-
-### **Libraries Used**
-- `SPI.h` – Serial Peripheral Interface communication.
-- `Wire.h` – I2C communication for RFID module.
-- `Adafruit_GFX.h` – Graphics library for OLED display.
-- `Adafruit_SSD1306.h` – OLED control library.
-- `MFRC522.h` – RFID card reader library.
-- `ESP8266WiFi.h` – WiFi connection for ESP8266.
-- `NTPClient.h` – Synchronizes time with NTP server.
-- `WiFiUdp.h` – Handles UDP communication.
-- `PubSubClient.h` – MQTT protocol for message transmission.
-- `TridentTD_LineNotify.h` – Sends notifications via LINE Notify API.
-
 ## 🧑‍🔬 **Testing Scenarios** :
 
 ### **Scenario 1 : Scanning a Registered RFID Card**
@@ -148,3 +159,6 @@ The attendance data is stored in **JSON format**, containing student details suc
 - **Dependent Variable:** No data is displayed or stored.
 - **Control Variables:** RFID Sensor, OLED Display, Key Tag.
 - **Result:** ![Test Image](https://github.com/TOEYJIRAKIT/IOT-MiniProject/assets/110581279/c837699d-fabb-4724-983b-86ad8e897e8e)
+
+## 📽️ **Project Preview** :
+
