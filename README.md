@@ -161,4 +161,4 @@ The attendance data is stored in **JSON format**, containing student details suc
 - **Result:** ![Test Image](https://github.com/TOEYJIRAKIT/IOT-MiniProject/assets/110581279/c837699d-fabb-4724-983b-86ad8e897e8e)
 
 ## 📽️ **Project Preview** :
-
+https://github.com/TOEYJIRAKID/personal_gif_public/blob/main/attendance.gif
